@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './Input.module.scss'
+import classNames from 'classnames'
 
 export type CustomInputType =
  | 'email'
@@ -15,6 +16,7 @@ interface InputProps {
  placeholder?: string
  required?: boolean
  type: CustomInputType
+ className?: string
 }
  
 const Input: React.FC<InputProps> = props => {
@@ -24,6 +26,7 @@ const Input: React.FC<InputProps> = props => {
     placeholder = label,
     required,
     type,
+    className
   } = props
 
   const renderRequiredLabel = (): JSX.Element => (
@@ -53,7 +56,7 @@ const Input: React.FC<InputProps> = props => {
           onChange={handleInputChange}
           required={required ?? false}
           value={inputValue}
-          className={styles.baseInput}
+          className={classNames(styles.baseInput, className)}
         />
       </div>
     )

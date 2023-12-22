@@ -1,9 +1,14 @@
 import React from 'react'
-import { Button } from 'shared/components'
+import { Button, Input } from 'shared/components'
+
+import './styles/index.scss'
+import { RegistrationForm } from 'widgets/registration-form'
 
 const App = () => {
   return (
-    <Button>Hehe</Button>
+    <>
+      <RegistrationForm />
+    </>
   )
 }
 

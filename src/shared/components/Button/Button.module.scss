@@ -1,0 +1,17 @@
+.baseButton {
+    font-family: 'Manrope', Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #D12965;
+
+    background-color: #fff;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.filledButton {
+    background: linear-gradient(180deg, #CB0E70 -26%, #F1B72C 183%);
+
+    color: #fff;
+}

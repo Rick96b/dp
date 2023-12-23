@@ -6,21 +6,39 @@ import classNames from 'classnames';
 interface ButtonProps {
   children: React.ReactNode
   isFilled?: boolean
+  isColoredText?: boolean
   className?: string
   onClick: Function
+  prefix?: React.ReactNode
+  suffix?: React.ReactNode
 }
 
 const Button:React.FC<ButtonProps> = props => {
   const {
     children,
     isFilled,
+    isColoredText,
     className,
-    onClick
+    onClick,
+    prefix,
+    suffix
   } = props
 
   return (
-    <button className={classNames(styles.baseButton, isFilled ? styles.filledButton : '', className)} onClick={(event) => onClick(event)}>
+    <button 
+      className={classNames(className, styles.baseButton, 
+        isFilled ? styles.filledButton : '', 
+        isColoredText ? styles.coloredText : '', 
+      )} 
+      onClick={(event) => onClick(event)}
+    >
+      <div className={styles.prefix}>
+        {prefix}
+      </div>
       {children}
+      <div className={styles.suffix}>
+        {suffix}
+      </div>
     </button>
   )
 }

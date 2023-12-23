@@ -7,18 +7,20 @@ interface ButtonProps {
   children: React.ReactNode
   isFilled?: boolean
   className?: string
+  onClick: Function
 }
 
 const Button:React.FC<ButtonProps> = props => {
   const {
     children,
     isFilled,
-    className
+    className,
+    onClick
   } = props
 
   return (
-    <button className={classNames(styles.baseButton, isFilled ? styles.filledButton : '', className)}>
-        {children}
+    <button className={classNames(styles.baseButton, isFilled ? styles.filledButton : '', className)} onClick={(event) => onClick(event)}>
+      {children}
     </button>
   )
 }

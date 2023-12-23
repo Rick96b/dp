@@ -3,7 +3,14 @@ import { Button, Input } from 'shared/components';
 
 import styles from './RegistrationForm.module.scss'
 
-const RegistrationForm = () => {
+interface RegistrationFormProps {
+  changeForm: Function,
+}
+
+
+const RegistrationForm:React.FC<RegistrationFormProps> = props => {
+  const {changeForm} = props
+
   return (
     <form className={styles.form}>
         <Input type='text' label='Логин'/>
@@ -14,8 +21,8 @@ const RegistrationForm = () => {
         <Input type='text' label='Отделение организации'/>
         <Input type='text' label='Деятельность организации'/>
         <div className={styles.buttonsContainer}>
-            <Button isFilled className={styles.formButton}>Зарегистрироваться</Button>
-            <Button className={styles.formButton}>Авторизироваться</Button>
+            <Button onClick={() => {}} isFilled className={styles.formButton}>Зарегистрироваться</Button>
+            <Button className={styles.formButton} onClick={() => changeForm()}>Авторизироваться</Button>
         </div>
     </form>
   )

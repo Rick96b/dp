@@ -1,15 +1,15 @@
 import React from 'react'
-import { Button, Input } from 'shared/components'
 
+import { withProviders } from './providers'
+import AppRouter from 'pages'
 import './styles/index.scss'
-import { RegistrationForm } from 'widgets/registration-form'
 
 const App = () => {
   return (
     <>
-      <RegistrationForm />
+      <AppRouter />
     </>
   )
 }
 
-export default App
+export default withProviders(App);

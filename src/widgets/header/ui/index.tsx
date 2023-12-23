@@ -45,7 +45,7 @@ const Header = () => {
             onClick={() => {}} 
             isColoredText 
             className={styles.profileButton}
-            prefix={<img src={profileIcon} alt='profile' style={{display: 'block'}}/>}
+            prefix={<img src={profileIcon} alt='profile' style={{display: 'block', width: '22px', height: '22px'}}/>}
             suffix={<img src={arrowDown} alt='open profile' style={{display: 'block', marginTop: '3px'}}/>}
         >
             Профиль

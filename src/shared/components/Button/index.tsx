@@ -35,7 +35,7 @@ const Button:React.FC<ButtonProps> = props => {
       <div className={styles.prefix}>
         {prefix}
       </div>
-      {children}
+      <span>{children}</span>
       <div className={styles.suffix}>
         {suffix}
       </div>

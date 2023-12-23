@@ -12,7 +12,7 @@
 
 .buttonsContainer {
     display: flex;
-    width: 37%;
+    width: clamp(350px, 420px, 443px);
     gap: 10px;
     height: 100%;
 }

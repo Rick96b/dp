@@ -1,14 +1,18 @@
 import React, { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { Header } from 'widgets/header'
 
 const LoginPage = lazy(() => import('./login-page').then((module) => ({ default: module.LoginPage })))
 
 const AppRouter = () => {
 
     return (
-        <Routes>
-            <Route path='*' element={<LoginPage />} />
-        </Routes>
+        <>
+            <Header />
+            <Routes>
+                <Route path='*' element={<LoginPage />} />
+            </Routes>
+        </>
     )
 }
 

@@ -16,7 +16,7 @@ const AuthorizationForm: React.FC<AuthorizationFormProps> = props => {
     <Input type='password' label='Пароль'/>
     <div className={styles.buttonsContainer}>
         <Button onClick={() => {}}isFilled className={styles.formButton}>Войти</Button>
-        <Button className={styles.formButton} onClick={() => changeForm()}>Зарегистрироваться</Button>
+        <Button className={styles.formButton} onClick={() => changeForm()} isColoredText>Зарегистрироваться</Button>
     </div>
 </form>
   )

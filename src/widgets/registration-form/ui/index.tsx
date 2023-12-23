@@ -22,7 +22,7 @@ const RegistrationForm:React.FC<RegistrationFormProps> = props => {
         <Input type='text' label='Деятельность организации'/>
         <div className={styles.buttonsContainer}>
             <Button onClick={() => {}} isFilled className={styles.formButton}>Зарегистрироваться</Button>
-            <Button className={styles.formButton} onClick={() => changeForm()}>Авторизироваться</Button>
+            <Button className={styles.formButton} onClick={() => changeForm()} isColoredText>Авторизироваться</Button>
         </div>
     </form>
   )

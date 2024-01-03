@@ -11,6 +11,7 @@ interface ButtonProps {
   onClick: Function
   prefix?: React.ReactNode
   suffix?: React.ReactNode
+  type?: 'button' | 'submit' | 'reset'
 }
 
 const Button:React.FC<ButtonProps> = props => {
@@ -21,7 +22,8 @@ const Button:React.FC<ButtonProps> = props => {
     className,
     onClick,
     prefix,
-    suffix
+    suffix,
+    type
   } = props
 
   return (
@@ -31,6 +33,7 @@ const Button:React.FC<ButtonProps> = props => {
         isColoredText ? styles.coloredText : '', 
       )} 
       onClick={(event) => onClick(event)}
+      type={type}
     >
       <div className={styles.prefix}>
         {prefix}

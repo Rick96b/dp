@@ -17,51 +17,48 @@ interface InputProps {
  required?: boolean
  type: CustomInputType
  className?: string
+ onChange?: Function
+ value?: string | number | undefined
 }
  
 const Input: React.FC<InputProps> = props => {
-  const [inputValue, setInputValue] = useState<string | number | undefined>()
   const {
     label,
     placeholder = label,
     required,
     type,
-    className
+    className,
+    onChange = () => {},
+    value
   } = props
 
   const renderRequiredLabel = (): JSX.Element => (
     <span className='input-required'>*</span>
   )
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setInputValue(e.target.value)
-
-  const renderInputNode = (): JSX.Element => {
-    const inputID: string = label?.toLowerCase() || ''
-    return (
-      <div className={styles.inputContainer}>
-        {label 
-        ?
-          <label htmlFor={inputID} className={styles.baseLabel}>
-            {label} {required ? renderRequiredLabel() : null}
-          </label>
-        : 
-          '' 
-        }
-        <input
-          id={inputID}
-          type={type}
-          name={inputID}
-          placeholder={placeholder}
-          onChange={handleInputChange}
-          required={required ?? false}
-          value={inputValue}
-          className={classNames(styles.baseInput, className)}
-        />
-      </div>
-    )
-  }
-  return <>{label ? renderInputNode() : null}</>
+  const inputID: string = label?.toLowerCase() || ''
+  
+  return (
+    <div className={classNames(styles.inputContainer, className)}>
+      {label 
+      ?
+        <label htmlFor={inputID} className={styles.baseLabel}>
+          {label} {required ? renderRequiredLabel() : null}
+        </label>
+      : <></> 
+      }
+      <input
+        id={inputID}
+        type={type}
+        name={inputID}
+        placeholder={placeholder}
+        onChange={(event) => onChange(event.target.value)}
+        required={required ?? false}
+        value={value}
+        className={styles.baseInput}
+      />
+    </div>
+  )
 }
  
 export default Input

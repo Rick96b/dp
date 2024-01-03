@@ -1,1 +1,1 @@
-export {default as GostTable} from './ui'
+export {default as GostsTable} from './ui'

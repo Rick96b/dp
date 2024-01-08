@@ -3,7 +3,11 @@ import React from 'react'
 import styles from './UsersReview.module.scss'
 import { Button } from 'shared/components';
 
-const UsersReview = () => {
+interface UsersTableProps {
+
+}
+
+const UsersReview: React.FC<UsersTableProps> = props => {
   return (
     <table className={styles.table}>
       <thead>

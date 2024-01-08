@@ -27,7 +27,7 @@ const LoginPage = () => {
 
     const handleAuthorization = (user: authorizationModel.UserAuthorization) => {
         axios.post('https://backend-seaz96.kexogg.ru/api/accounts/login', user)
-        .then(response => setUser(response.data))
+        .then(() => console.log('hwhw'))
         .catch(error => console.log(error))
     }
 

@@ -5,6 +5,8 @@ import { Button } from 'shared/components';
 import { gostModel } from 'entities/gost';
 import eye from 'shared/assets/eye.svg';
 import pen from 'shared/assets/pen.svg';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 interface GostsTableProps {
   gosts: gostModel.Gost[]
@@ -28,13 +30,19 @@ const GostsTable: React.FC<GostsTableProps> = props => {
           {gosts.map(gost => 
             <tr>
               <td>{gost.docId}</td>
-              <td>{gost.actual.designation}</td>
-              <td>{gost.actual.codeOKS}</td>
-              <td className={styles.gostDescription}>{gost.actual.fullName}</td>
+              <td>{gost.primary.designation}</td>
+              <td>{gost.primary.codeOKS}</td>
+              <td className={styles.gostDescription}>{gost.primary.fullName}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Button onClick={() => {}} className={styles.tableButton} isColoredText prefix={<img src={eye}></img>}>Просмотр</Button>
-                  <Button onClick={() => {}} className={styles.tableButton} isFilled prefix={<img src={pen}></img>}>Редактирование</Button>
+                  <Link to={`/gost-review/${gost.docId}`} className={classNames(styles.tableButton, 'baseButton', 'coloredText')}>
+                    <img src={eye} alt='eye' className={styles.buttonIcon}/>
+                    Просмотр
+                  </Link>
+                  <Link to='/' className={classNames(styles.tableButton, 'baseButton', 'filledButton')}>
+                    <img src={pen} alt='pen' className={styles.buttonIcon}/>
+                    Редактирование
+                  </Link>
                 </div>
               </td>
             </tr>

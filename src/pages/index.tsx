@@ -31,7 +31,7 @@ const AppRouter = () => {
             {user ?
             <Routes>
                 <Route path='/' element={<GostsPage />} />
-                <Route path='/gost-review' element={<GostReviewPage />} />
+                <Route path='/gost-review/:id' element={<GostReviewPage />} />
                 <Route path='/gost-editor' element={<GostEditorPage />} />
                 <Route path='/users-page' element={<UsersPage />} />
                 <Route path='/reset-password' element={<ResetPasswordPage />} />

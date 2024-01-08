@@ -10,6 +10,7 @@ export type CustomInputType =
  | 'phone'
  | 'text'
  | 'zip'
+ | 'date'
  
 interface InputProps {
  label?: string

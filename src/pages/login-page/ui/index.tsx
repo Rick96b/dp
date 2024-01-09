@@ -1,14 +1,11 @@
 import React, {useContext, useState} from 'react'
 import axios from 'axios';
 
-import { UserContext } from 'pages';
 import { AuthorizationForm, authorizationModel } from 'widgets/authorization-form';
 import { RegistrationForm, registrationModel } from 'widgets/registration-form';
 import urfuLogo from 'shared/assets/urfu.png';
 import styles from './LoginPage.module.scss';
-
-
-
+import { UserContext, userModel } from 'entities/user';
 
 enum states {
     authorization,
@@ -21,13 +18,21 @@ const LoginPage = () => {
 
     const handleRegistration = (user: registrationModel.UserRegistration) => {
         axios.post('https://backend-seaz96.kexogg.ru/api/accounts/register', user)
-        .then(response => setUser(response.data))
+        .then(response => {
+            const {login, name, role, id, token} = response.data
+            setUser({login: login, name: name, role: role, id: id});
+            localStorage.setItem('jwt_token', token)
+        })
         .catch(error => console.log(error))
     }
 
     const handleAuthorization = (user: authorizationModel.UserAuthorization) => {
         axios.post('https://backend-seaz96.kexogg.ru/api/accounts/login', user)
-        .then(() => console.log('hwhw'))
+        .then((response) => {
+            const {login, name, role, id, token} = response.data
+            setUser({login: login, name: name, role: role, id: id});
+            localStorage.setItem('jwt_token', token)
+        })
         .catch(error => console.log(error))
     }
 

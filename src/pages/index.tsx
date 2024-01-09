@@ -1,5 +1,6 @@
-import { userModel } from 'entities/user'
-import React, { lazy, useState } from 'react'
+import axios from 'axios'
+import { UserContext, userModel } from 'entities/user'
+import React, { lazy, useContext, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Header } from 'widgets/header'
 
@@ -10,21 +11,14 @@ const GostEditorPage = lazy(() => import('./gost-editor-page').then((module) => 
 const UsersPage = lazy(() => import('./users-page').then((module) => ({ default: module.UsersPage })))
 const ResetPasswordPage = lazy(() => import('./reset-password-page').then((module) => ({ default: module.ResetPasswordPage })))
 
-type UserContextType = {
-    user: userModel.User | null,
-    setUser: (user: userModel.User | null) => void
-}
 
-export const UserContext = React.createContext<UserContextType>({
-    user: null,
-    setUser:() => {}
-})
+
 
 const AppRouter = () => {
-    const [user, setUser] = useState<userModel.User | null>(null)
-
+    const {user, setUser} = useContext(UserContext)
+   
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        <>
             {user &&
                 <Header />
             }
@@ -41,7 +35,7 @@ const AppRouter = () => {
                 <Route path='*' element={<LoginPage />} />
             </Routes>
             }
-        </UserContext.Provider>
+        </>
     )
 }
 

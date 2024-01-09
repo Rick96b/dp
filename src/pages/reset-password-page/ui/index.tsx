@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { ResetPasswordForm } from 'widgets/reset-password-form'
 
 import styles from './ResetPasswordPage.module.scss'
-import { UserContext } from 'pages'
 import axios from 'axios'
+import { UserContext } from 'entities/user'
 
 const ResetPasswordPage = () => {
   const {user} = useContext(UserContext)

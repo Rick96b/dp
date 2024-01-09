@@ -8,7 +8,7 @@ import addIcon from '../assets/add-document.svg'
 import arrowDown from '../assets/arrow-down.svg'
 import profileIcon from '../assets/profile-icon.svg'
 import classNames from 'classnames';
-import { UserContext } from 'pages';
+import { UserContext } from 'entities/user';
 
 const ProfileDropdown = () => {
     const {user, setUser} = useContext(UserContext);

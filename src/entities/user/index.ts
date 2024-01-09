@@ -1,1 +1,2 @@
-export * as userModel from './userModel'
+export * as userModel from './model/userModel'
+export {UserContext} from './context/userContext';

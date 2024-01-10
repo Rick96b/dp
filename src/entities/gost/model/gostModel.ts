@@ -6,8 +6,8 @@ export type Gost = {
         "fullName": string,
         "codeOKS": string,
         "activityField": string,
-        "acceptanceDate": Date,
-        "commissionDate": Date,
+        "acceptanceDate": string,
+        "commissionDate": string,
         "author": string,
         "acceptedFirstTimeOrReplaced": string,
         "content": string,
@@ -20,7 +20,8 @@ export type Gost = {
         "amendments": string,
         "status": number,
         "harmonization": number,
-        "isPrimary": boolean
+        "isPrimary": true,
+        "referencesId": number
     },
     "actual": {
         "id": number,
@@ -28,8 +29,8 @@ export type Gost = {
         "fullName": string,
         "codeOKS": string,
         "activityField": string,
-        "acceptanceDate": Date,
-        "commissionDate": Date,
+        "acceptanceDate": string,
+        "commissionDate": string,
         "author": string,
         "acceptedFirstTimeOrReplaced": string,
         "content": string,
@@ -42,12 +43,13 @@ export type Gost = {
         "amendments": string,
         "status": number,
         "harmonization": number,
-        "isPrimary": boolean
+        "isPrimary": true,
+        "referencesId": number
     },
     "references":
     {
         "docId": number,
         "designation": string,
-        "status": number
+        "status": 0 | 1 | 2,
     }[]
 }

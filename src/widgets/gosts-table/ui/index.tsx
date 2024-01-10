@@ -39,7 +39,7 @@ const GostsTable: React.FC<GostsTableProps> = props => {
                     <img src={eye} alt='eye' className={styles.buttonIcon}/>
                     Просмотр
                   </Link>
-                  <Link to='/' className={classNames(styles.tableButton, 'baseButton', 'filledButton')}>
+                  <Link to={`/gost-edit/${gost.docId}`} className={classNames(styles.tableButton, 'baseButton', 'filledButton')}>
                     <img src={pen} alt='pen' className={styles.buttonIcon}/>
                     Редактирование
                   </Link>

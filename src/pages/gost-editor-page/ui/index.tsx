@@ -8,8 +8,12 @@ import { newGostModel } from 'widgets/gost-form';
 
 const GostEditorPage = () => {
 
-  const handleSubmit = (gost: newGostModel.GostToSave) => {
-    axios.post('https://backend-seaz96.kexogg.ru/api/docs/add', gost)
+  const addNewDocument = (gost: newGostModel.GostToSave) => {
+    axios.post('https://backend-seaz96.kexogg.ru/api/docs/add', gost, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+      }
+    })
     .then(responce => console.log(responce))
   }
 
@@ -19,7 +23,7 @@ const GostEditorPage = () => {
         <Filter />
       </section>
       <section className={styles.reviewSection}>
-        <GostForm handleSubmit={handleSubmit}/>
+        <GostForm handleSubmit={addNewDocument}/>
       </section>
     </div>
   )

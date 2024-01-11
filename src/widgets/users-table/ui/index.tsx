@@ -1,50 +1,46 @@
 import React from 'react'
 
 import styles from './UsersReview.module.scss'
-import { Button } from 'shared/components';
+import { userModel } from 'entities/user';
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 interface UsersTableProps {
+  users: userModel.User[]
+}
 
+enum roles {
+  'User'='Пользователь',
+  'Admin'='Администратор',
+  'Heisenberg'='Главный администратор'
 }
 
 const UsersReview: React.FC<UsersTableProps> = props => {
+  const {
+    users
+  } = props
+  console.log(users)
   return (
     <table className={styles.table}>
       <thead>
-        <th>
-          №
-        </th>
-        <th>
-          Роль
-        </th>
-        <th>
-          Логин
-        </th>
-        <th>
-          Фио
-        </th>
-        <th>
-          Действия
-        </th>
+        <th>№</th>
+        <th>Роль</th>
+        <th>Логин</th>
+        <th>Фио</th>
+        <th>Действия</th>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            1
-          </td>
-          <td>
-            Пользователь
-          </td>
-          <td>
-            mironik
-          </td>
-          <td>
-            Миронов Николай Сергеевич
-          </td>
-          <td>
-            <Button onClick={() => {}} className={styles.tableButton} isFilled>Редактирование</Button>
-          </td>
-        </tr>
+        {users.map(user => 
+          <tr>
+            <td>{user.id}</td>
+            <td>{roles[user.role]}</td>
+            <td>{user.login}</td>
+            <td>{user.name}</td>
+            <td>
+              <Link to={`/users-edit-page/${user.id}`} className={classNames(styles.tableButton, 'baseButton', 'filledButton')}>Редактирование</Link>
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   )

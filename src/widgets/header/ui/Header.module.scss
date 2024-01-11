@@ -59,6 +59,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 280px;
 
     padding: 15px;
 
@@ -71,5 +72,14 @@
     font-weight: 500;
     line-height: 20px;
     letter-spacing: 0em;
+    text-align: left;
+}
+
+.dropdownImage {
+    margin-right: 5px;
+}
+
+.exitButton {
+    font: inherit;
     text-align: left;
 }

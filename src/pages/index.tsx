@@ -10,12 +10,12 @@ const GostEditorPage = lazy(() => import('./gost-editor-page').then((module) => 
 const UsersPage = lazy(() => import('./users-page').then((module) => ({ default: module.UsersPage })))
 const ResetPasswordPage = lazy(() => import('./reset-password-page').then((module) => ({ default: module.ResetPasswordPage })))
 const GostEditPage = lazy(() => import('./gost-edit-page').then((module) => ({ default: module.GostEditPage })))
-
-
+const UserEditPage = lazy(() => import('./user-edit-page').then((module) => ({ default: module.UserEditPage })))
+const ArchivePage = lazy(() => import('./archive-page').then((module) => ({ default: module.ArchivePage })))
 
 
 const AppRouter = () => {
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
    
     return (
         <>
@@ -29,7 +29,9 @@ const AppRouter = () => {
                 <Route path='/gost-editor' element={<GostEditorPage />} />
                 <Route path='/gost-edit/:id' element={<GostEditPage />} />
                 <Route path='/users-page' element={<UsersPage />} />
+                <Route path='/users-edit-page/:id' element={<UserEditPage />} />
                 <Route path='/reset-password' element={<ResetPasswordPage />} />
+                <Route path='/archive' element={<ArchivePage />} />
             </Routes>
             :
             <Routes>

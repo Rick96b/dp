@@ -1,8 +1,12 @@
 export type User = {
-    id: string,
+    id: number,
     login: string,
     name: string,
-    role: string
+    orgName: string,
+    orgBranch: string,
+    orgActivity: string,
+    role: "Admin" | "Heisenberg" | "User",
+    token: string
 }
 
 export type UserContextType = {

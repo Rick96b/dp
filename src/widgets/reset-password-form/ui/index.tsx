@@ -20,8 +20,9 @@ const ResetPasswordForm:React.FC<ResetPasswordFormProps> = props => {
 
   const validateData = (event: React.FormEvent) => {
     event.preventDefault()
+
     if (changePasswordData.newPassword === changePasswordData.repeatedNewPassword)
-      handleSubmit(changePasswordData)
+      handleSubmit(changePasswordData.oldPassword, changePasswordData.newPassword)
   }
 
   return (

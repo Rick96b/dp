@@ -17,21 +17,19 @@ const LoginPage = () => {
     const {setUser} = useContext(UserContext)
 
     const handleRegistration = (user: registrationModel.UserRegistration) => {
-        axios.post('https://backend-seaz96.kexogg.ru/api/accounts/register', user)
+        axios.post<userModel.User>('https://backend-seaz96.kexogg.ru/api/accounts/register', user)
         .then(response => {
-            const {login, name, role, id, token} = response.data
-            setUser({login: login, name: name, role: role, id: id});
-            localStorage.setItem('jwt_token', token)
+            setUser(response.data);
+            localStorage.setItem('jwt_token', response.data.token)
         })
         .catch(error => console.log(error))
     }
 
     const handleAuthorization = (user: authorizationModel.UserAuthorization) => {
-        axios.post('https://backend-seaz96.kexogg.ru/api/accounts/login', user)
+        axios.post<userModel.User>('https://backend-seaz96.kexogg.ru/api/accounts/login', user)
         .then((response) => {
-            const {login, name, role, id, token} = response.data
-            setUser({login: login, name: name, role: role, id: id});
-            localStorage.setItem('jwt_token', token)
+            setUser(response.data);
+            localStorage.setItem('jwt_token', response.data.token)
         })
         .catch(error => console.log(error))
     }

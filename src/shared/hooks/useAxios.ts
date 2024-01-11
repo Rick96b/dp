@@ -8,7 +8,7 @@ const useAxios = <T>(url: string) => {
 
     const fetchData = () => {
         axios
-            .get(url)
+            .get(url, {headers: {Authorization: `Bearer ${localStorage.getItem('jwt_token')}`}})
             .then((res) => {
                 setResponse(res.data || null);
             })

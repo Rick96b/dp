@@ -7,11 +7,17 @@ import { UserContext } from 'entities/user'
 
 const ResetPasswordPage = () => {
   const {user} = useContext(UserContext)
-  const handleSubmit = (newPassword: string) => {
+  const handleSubmit = (oldPassword: string, newPassword: string) => {
+    console.log({
+      'login': user?.login,
+      'new_password': newPassword,
+      'oldPassword': oldPassword
+    })
     axios.post('https://backend-seaz96.kexogg.ru/api/accounts/change-password', {
       'login': user?.login,
-      'new_password': newPassword
-    }).then(responce => console.log(responce))
+      'new_password': newPassword,
+      'old_password': oldPassword
+    }, {headers: {'Authorization': `Bearer ${localStorage.getItem('jwt_token')}`}}).then(responce => console.log(responce))
   }
 
   return (

@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import addIcon from '../assets/add-document.svg'
 import arrowDown from '../assets/arrow-down.svg'
 import profileIcon from '../assets/profile-icon.svg'
+import lock from '../assets/lock.png';
+import exit from '../assets/exit.png';
+import account from '../assets/account.png'
 import classNames from 'classnames';
 import { UserContext } from 'entities/user';
 
@@ -15,9 +18,21 @@ const ProfileDropdown = () => {
 
     return (
         <div className={styles.dropdown}>
-            <Link to='/reset-password' style={{color: 'inherit'}}>Сменить пароль</Link>
-            <Link to='/' style={{color: 'inherit'}}>Редактировать профиль</Link>
-            <button onClick={() => setUser(null)}>Выйти</button>
+            <Link to='/reset-password' style={{color: 'inherit'}}>
+                <img src={lock} className={styles.dropdownImage} alt='reset password' />
+                Сменить пароль
+            </Link>
+            <Link to='/' style={{color: 'inherit'}}>
+                <img src={account} className={styles.dropdownImage} alt='edit profile' />
+                Редактировать профиль
+            </Link>
+            <button className={styles.exitButton} onClick={() => {
+                setUser(null)
+                localStorage.setItem('jwt_token', '')
+            }}>
+                <img src={exit} className={styles.dropdownImage} alt='exit' />
+                Выйти
+            </button>
         </div>
     )
 }
@@ -53,7 +68,7 @@ const Header = () => {
                         </Link>
                     </li>
                     <li className={styles.navItem}>
-                        <Link to='/' style={{color: 'inherit'}}>
+                        <Link to='/archive' style={{color: 'inherit'}}>
                             Архив
                         </Link>
                     </li>

@@ -13,9 +13,7 @@ export const withUser = (component: () => React.ReactNode) => () => {
             }
           })
           .then((repsonce) => {
-            const {login, name} = repsonce.data
-            console.log({login: login, name: name, role: 'Admin', id: '123'})
-            setUser({login: login, name: name, role: 'Admin', id: '123'})
+            setUser(repsonce.data)
           })
           .catch(error => console.log(error))
         }

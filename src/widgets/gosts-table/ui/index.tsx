@@ -9,47 +9,60 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 interface GostsTableProps {
-  gosts: gostModel.Gost[]
+  gosts: gostModel.Gost[],
+  filterValue?: string
 }
 
 const GostsTable: React.FC<GostsTableProps> = props => {
-  const {gosts} = props
+  const {gosts, filterValue} = props
 
   return (
     <table className={styles.table}>
         <thead>
           <tr className={styles.tableRow}>
             <th>№</th>
-            <th>Обозначение</th>
             <th>Код ОКС</th>
+            <th>Обозначение</th>
             <th>Наименование</th>
-            <th></th>
+            <th>Действия</th>
           </tr>
         </thead>
         <tbody>
-          {gosts.map(gost => 
-            <tr>
-              <td>{gost.docId}</td>
-              <td>{gost.primary.designation}</td>
-              <td>{gost.primary.codeOKS}</td>
-              <td className={styles.gostDescription}>{gost.primary.fullName}</td>
-              <td>
-                <div className={styles.buttons}>
-                  <Link to={`/gost-review/${gost.docId}`} className={classNames(styles.tableButton, 'baseButton', 'coloredText')}>
-                    <img src={eye} alt='eye' className={styles.buttonIcon}/>
-                    Просмотр
-                  </Link>
-                  <Link to={`/gost-edit/${gost.docId}`} className={classNames(styles.tableButton, 'baseButton', 'filledButton')}>
-                    <img src={pen} alt='pen' className={styles.buttonIcon}/>
-                    Редактирование
-                  </Link>
-                </div>
-              </td>
-            </tr>
-          )}
-          
+          {filterValue 
+            ? 
+            gosts.map(gost => 
+              (gost.primary.designation.includes(filterValue) || gost.primary.fullName.includes(filterValue)) && 
+              gostRow(gost)
+            ) 
+            : 
+            gosts.map(gost => gostRow(gost))
+          }   
         </tbody>
     </table>
+  )
+}
+
+
+const gostRow = (gost: gostModel.Gost) => {
+  return (
+    <tr>
+      <td>{gost.docId}</td>
+      <td>{gost.primary.codeOKS}</td>
+      <td>{gost.primary.designation}</td>
+      <td className={styles.gostDescription}>{gost.primary.fullName}</td>
+      <td>
+        <div className={styles.buttons}>
+          <Link to={`/gost-review/${gost.docId}`} className={classNames(styles.tableButton, 'baseButton', 'coloredText')}>
+            <img src={eye} alt='eye' className={styles.buttonIcon}/>
+            Просмотр
+          </Link>
+          <Link to={`/gost-edit/${gost.docId}`} className={classNames(styles.tableButton, 'baseButton', 'filledButton')}>
+            <img src={pen} alt='pen' className={styles.buttonIcon}/>
+            Редактирование
+          </Link>
+        </div>
+      </td>
+    </tr>
   )
 }
 

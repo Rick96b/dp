@@ -1,15 +1,8 @@
 .table {
-    display: grid;
-    grid-template-columns: minmax(50px, 1fr) minmax(100px, 4fr) minmax(100px, 3fr) minmax(150px, 8fr) minmax(150px, 6fr);
+    display: table;
     border-collapse: collapse;
+    width: 100%;
 
-    thead,
-    tbody,
-    tr {
-        display: contents;
-    }
-
-    .table,
     tr,
     th,
     td {
@@ -18,8 +11,6 @@
 
     td,
     th {
-        display: flex;
-        align-items: center;
         padding: 9px;
 
         font-family: var(--main-font);
@@ -37,7 +28,7 @@
 
     td:first-child,
     th:first-child {
-        justify-content: center;
+        text-align: center;
     }
 }
 
@@ -46,8 +37,6 @@
 .tableButton {
     height: 38px;
 }
-
-
 
 .buttons {
     display: flex;
@@ -60,6 +49,7 @@
 }
 
 .tableButton {
+    padding: 4px;
     flex-grow: 1;
 }
 

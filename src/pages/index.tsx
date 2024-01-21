@@ -29,7 +29,7 @@ const AppRouter = () => {
                 <Route path='/gost-editor' element={<GostEditorPage />} />
                 <Route path='/gost-edit/:id' element={<GostEditPage />} />
                 <Route path='/users-page' element={<UsersPage />} />
-                <Route path='/users-edit-page/:id' element={<UserEditPage />} />
+                <Route path='/user-edit-page/:id' element={<UserEditPage />} />
                 <Route path='/reset-password' element={<ResetPasswordPage />} />
                 <Route path='/archive' element={<ArchivePage />} />
             </Routes>

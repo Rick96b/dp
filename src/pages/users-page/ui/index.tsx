@@ -14,9 +14,6 @@ const UsersPage = () => {
   if(response)
     return (
       <div className='container'>
-          <section className={styles.filterSection}>
-              <Filter />
-          </section>
           <section className={styles.gostSection}>
             <UsersTable users={response}/>
           </section>

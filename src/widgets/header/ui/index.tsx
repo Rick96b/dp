@@ -22,7 +22,7 @@ const ProfileDropdown = () => {
                 <img src={lock} className={styles.dropdownImage} alt='reset password' />
                 Сменить пароль
             </Link>
-            <Link to='/' style={{color: 'inherit'}}>
+            <Link to={`/user-edit-page/${user?.id}`} style={{color: 'inherit'}}>
                 <img src={account} className={styles.dropdownImage} alt='edit profile' />
                 Редактировать профиль
             </Link>

@@ -26,9 +26,6 @@ const GostEditPage = () => {
   if(response) 
     return (
       <div className='container'>
-        <section className={styles.filterSection}>
-          <Filter />
-        </section>
         <section className={styles.reviewSection}>
           <GostForm 
             handleSubmit={editOldDocument} 

@@ -16,11 +16,8 @@ const GostReviewPage = () => {
   if(response) {
     return (
       <div className='container'>
-        <section className={styles.filterSection}>
-          <Filter />
-        </section>
         <section className={styles.reviewSection}>
-          <GostReview gost={response}/>
+          <GostReview gost={response} gostId={response.docId}/>
         </section>
       </div>
     )

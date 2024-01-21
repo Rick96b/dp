@@ -40,3 +40,19 @@
     margin-bottom: 26px;
 }
 
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+
+    font-family: var(--main-fonr), Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+
+    border: 1px solid;
+    border-color: #D12965;
+    border-radius: 5px;
+}

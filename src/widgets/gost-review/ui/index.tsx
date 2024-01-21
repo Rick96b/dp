@@ -3,14 +3,18 @@ import React from 'react'
 import styles from './GostReview.module.scss';
 import { Button } from 'shared/components';
 import { gostModel } from 'entities/gost';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 interface GostReviewProps {
-    gost: gostModel.Gost
+    gost: gostModel.Gost,
+    gostId: number
 }
 
 const GostReview:React.FC<GostReviewProps> = props => {
     const {
-        gost
+        gost,
+        gostId
     } = props
 
     const primaryAcceptanceDate = new Date(gost.primary.acceptanceDate)
@@ -20,7 +24,7 @@ const GostReview:React.FC<GostReviewProps> = props => {
         <div className={styles.reviewContainer}>
             <h2 className={styles.title}>Просмотр документа</h2>
             <div className={styles.buttonsContainer}>
-                <Button onClick={() => {}} isColoredText>Редактироваться</Button>
+                <Link onClick={() => {}} to={`/gost-edit/${gostId}`} className={classNames(styles.link, 'coloredText')}>Редактировать</Link>
                 <Button onClick={() => {}} isColoredText>Архивировать</Button>
                 <Button onClick={() => {}} isColoredText>Удалить</Button>
                 <Button onClick={() => {}} isColoredText>Заменить</Button>

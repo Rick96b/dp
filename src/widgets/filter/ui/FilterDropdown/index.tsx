@@ -6,6 +6,7 @@ import arrowDown from '../../assets/arrowDown.png';
 import { Button, Input, RadioGroup } from 'shared/components';
 import { Collapse } from '@mui/material';
 import classNames from 'classnames';
+import { useAxios } from 'shared/hooks';
 
 interface FilterDropdownProps {
     filterSubmit: Function
@@ -15,7 +16,6 @@ const FilterDropdown: React.FC<FilterDropdownProps> = props => {
     const {
         filterSubmit
     } = props
-
     const [filterData, setFilterData] = useState<Partial<gostModel.GostFields>>({
         "designation": '',
         "fullName": '',
@@ -221,19 +221,6 @@ const FilterDropdown: React.FC<FilterDropdownProps> = props => {
                     type='text' 
                     value={filterData.documentText} 
                     onChange={(value: string) => setFilterData({...filterData, documentText: value})} 
-                />
-            </Collapse>
-        </div>
-        <div className={styles.dropdownItem}>
-            <div className={styles.dropdownItemInfo} onClick={() => setFilterStatus({...filterStatus, referencesId: !filterStatus.referencesId})}>
-                <img src={arrowDown} className={classNames(styles.arrowDown, filterStatus.referencesId ? styles.arrowUp : '')}/>
-                <p className={styles.dropdownItemName}>Нормативные ссылки</p>
-            </div>
-            <Collapse className={styles.dropdownItemFilter} in={filterStatus.referencesId}>
-                <Input 
-                    type='text' 
-                    value={filterData.referencesId} 
-                    onChange={(value: string) => setFilterData({...filterData, referencesId: parseInt(value)})} 
                 />
             </Collapse>
         </div>

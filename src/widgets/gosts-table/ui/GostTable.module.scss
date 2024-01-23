@@ -1,12 +1,16 @@
 .table {
+    position: relative;
     display: table;
     border-collapse: collapse;
     width: 100%;
 
-    tr,
     th,
     td {
-        border: 1px solid #D2D2D2
+        border: 1px solid #D2D2D2;
+    }
+
+    td {
+        border-top: none;
     }
 
     td,
@@ -29,6 +33,10 @@
     td:first-child,
     th:first-child {
         text-align: center;
+    }
+
+    tbody {
+        position: relative;
     }
 }
 
@@ -58,4 +66,27 @@
 .buttonIcon {
     display: inline-block;
     margin-right: 7px;
+}
+
+.loop {
+    position: absolute;
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    
+    cursor: pointer;
+}
+
+.collapse {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.applicationAreaContainer {
+    padding: 10px;
+    max-width: 175px;
+
+    border-radius: 7px;
 }

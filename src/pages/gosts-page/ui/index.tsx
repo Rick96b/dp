@@ -4,7 +4,6 @@ import { GostsTable } from 'widgets/gosts-table';
 import styles from './GostsPage.module.scss'
 import { useAxios } from 'shared/hooks';
 import { gostModel } from 'entities/gost';
-import classNames from 'classnames';
 import { useState } from 'react';
 
 const GostsPage = () => {
@@ -15,14 +14,14 @@ const GostsPage = () => {
 
 
   return (
-    <div className='container'>
+    <div className='container contentContainer'>
         <section className={styles.filterSection}>
             <Filter 
               filterSubmit={(filterData: gostModel.GostFields) => setParams(filterData)}
               inputSubmit={(inputData: string) => setInputValue(inputData)}
             />
         </section>
-        <section className={classNames(styles.gostSection, 'contentContainer')}>
+        <section className={styles.gostSection}>
             <GostsTable gosts={response || []} filterValue={inputValue}/>
         </section>
     </div>

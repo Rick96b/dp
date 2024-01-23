@@ -73,7 +73,7 @@ const Header = () => {
                         </Link>
                     </li>
                     <li className={styles.navItem}>
-                        <Link to='/' style={{color: 'inherit'}}>
+                        <Link to='/statistic' style={{color: 'inherit'}}>
                             Статистика
                         </Link>
                     </li>

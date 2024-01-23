@@ -14,7 +14,7 @@ const ArchivePage = () => {
 
     if(response)
         return (
-            <div className='container'>
+            <div className='container contentContainer'>
                 <section className={styles.filterSection}>
                     <Filter inputSubmit={() => {}} filterSubmit={(filterData: gostModel.GostFields) => setFilterParams(filterData)}/>
                 </section>

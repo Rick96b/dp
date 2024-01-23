@@ -6,7 +6,7 @@ const useAxios = <T>(url: string, defaultParams?:any) => {
     const [error, setError] = useState<string>('');
     const [loading, setloading] = useState<boolean>(true);
     const [params, setParams] = useState<any>(defaultParams)
-    console.log(params)
+
     const fetchData = () => {
         console.log(params)
         axios
